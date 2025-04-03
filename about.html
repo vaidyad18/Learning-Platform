@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - LearnHub</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .about-header {
+            background-color: #4a6cf7;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .about-header h1 {
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .about-header p {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+            color: white;
+        }
+
+        .about-section {
+            padding: 80px 0;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+        }
+
+        .about-content h2 {
+            margin-bottom: 20px;
+        }
+
+        .about-content p {
+            margin-bottom: 15px;
+        }
+
+        .mission-section {
+            background: #4a6cf7;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .mission-section h2 {
+            margin-bottom: 50px;
+            color: white;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .value-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--box-shadow);
+        }
+
+        .value-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .team-section {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .team-section h2 {
+            margin-bottom: 50px;
+        }
+
+        .team-grid {
+            display: grid;
+            margin: 0px 120px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+        }
+
+        .team-member {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+        }
+
+        .member-image {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .member-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .member-info {
+            padding: 20px;
+        }
+
+        .member-info h3 {
+            margin-bottom: 5px;
+        }
+
+        .member-info p {
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-icons a {
+            color: var(--secondary-color);
+        }
+
+        .social-icons a:hover {
+            color: var(--primary-color);
+        }
+
+        .stats-section {
+            background: var(--primary-color);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .stat-item h3 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 992px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                order: -1;
+            }
+        }
+
+        .line{
+            height: 1px;
+            background-color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>LearnHub</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html" class="active">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="login.php" class="btn btn-primary">Login</a>
+                <a href="register.php" class="btn">Sign Up</a>
+            </div>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <section class="about-header">
+        <div class="container">
+            <h1>About LearnHub</h1>
+            <p>We're on a mission to transform education and make quality learning accessible to everyone around the
+                world.</p>
+        </div>
+    </section>
+
+    <section class="about-section">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-content">
+                    <h2>Our Story</h2>
+                    <p>LearnHub was founded in 2025 with a simple yet powerful idea: education should be accessible to
+                        everyone, regardless of their location or background.</p>
+                    <p>What started as a small collection of online courses has grown into a comprehensive learning
+                        platform with thousands of students from around the world. Our team of dedicated educators and
+                        technology experts work tirelessly to create an engaging and effective learning experience.</p>
+                    <p>We believe that education has the power to transform lives, and we're committed to providing the
+                        tools and resources needed for personal and professional growth.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://freerangestock.com/sample/54098/business-people-represents-cooperation-corporate-and-meeting.jpg" alt="LearnHub Team">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mission-section">
+        <div class="container">
+            <h2>Our Mission & Values</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">🌟</div>
+                    <h3>Excellence</h3>
+                    <p>We strive for excellence in everything we do, from course content to user experience.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🔍</div>
+                    <h3>Accessibility</h3>
+                    <p>We believe education should be accessible to everyone, regardless of location or background.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🚀</div>
+                    <h3>Innovation</h3>
+                    <p>We continuously innovate to improve the learning experience and stay ahead of industry trends.
+                    </p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">👥</div>
+                    <h3>Community</h3>
+                    <p>We foster a supportive community where students can learn, share, and grow together.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="team-section">
+        <div class="container">
+            <h2>Meet Our Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-image">
+                        <img class="pfp" src="https://vaidya-d-portfolio.vercel.app/assets/pfp-KCnjZ4mm.jpg" alt="John Smith">
+                    </div>
+                    <div class="member-info">
+                        <h3>Vaidya Dandriyal</h3>
+                        <p>Front End Developer</p>
+                        <p>Built seamless user experiences and robust software solutions with efficiency and scalability.</p>
+                        <div class="social-icons">
+                            <a href="#"><span>T2 09315602722</span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="images/vivek.jpg" alt="Sarah Johnson">
+                    </div>
+                    <div class="member-info">
+                        <h3>Vivek </h3>
+                        <p>Android Developer</p>
+                        <p>Developed smooth, responsive, and high-performance Android applications.</p>
+                        <div class="social-icons">
+                            <a href="#"><span>T2 06315602722</span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img class="" src="images/vishal.jpg" alt="Michael Chen">
+                    </div>
+                    <div class="member-info">
+                        <h3>Vishal</h3>
+                        <p>Cyber Security Engineer</p>
+                        <p>Defender of digital realms, securing systems against ever-evolving cyber threats.</p>
+                        <div class="social-icons">
+                            <a href="#"><span>T2 09215602722</span></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>10K+</h3>
+                    <p>Students</p>
+                </div>
+                <div class="stat-item">
+                    <h3>200+</h3>
+                    <p>Courses</p>
+                </div>
+                <div class="stat-item">
+                    <h3>50+</h3>
+                    <p>Instructors</p>
+                </div>
+                <div class="stat-item">
+                    <h3>30+</h3>
+                    <p>Countries</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="line"></div>
+
+    <section class="cta">
+        <div class="container">
+            <h2>Join Our Learning Community</h2>
+            <p>Start your learning journey with LearnHub today.</p>
+            <a href="register.php" class="btn btn-large">Get Started</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>LearnHub</h3>
+                    <p>Quality education accessible to everyone, anywhere, anytime.</p>
+                    <div class="social-links">
+                        <a href="#"><span>Facebook</span></a>
+                        <a href="#"><span>Twitter</span></a>
+                        <a href="#"><span>Instagram</span></a>
+                        <a href="#"><span>LinkedIn</span></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="courses.php">Courses</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.php">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="help.html">Help Center</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <p>Email: info@learnhub.com</p>
+                    <p>Phone: +1 (555) 123-4567</p>
+                    <p>Address: 123 Education St, Learning City, LC 12345</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 LearnHub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
