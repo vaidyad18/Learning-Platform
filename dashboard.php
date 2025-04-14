@@ -1,17 +1,13 @@
 <?php
-// Initialize the session
 session_start();
 
-// Check if the user is logged in, if not then redirect to login page
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: login.php");
     exit;
 }
 
-// Include database configuration
 require_once "config.php";
 
-// Get user's enrolled courses
 $user_id = $_SESSION["id"];
 $enrolled_courses = [];
 
@@ -33,7 +29,6 @@ if($stmt = $mysqli->prepare($sql)){
     $stmt->close();
 }
 
-// Get recommended courses
 $recommended_courses = [];
 
 $sql = "SELECT id, title, category, image FROM courses 
@@ -308,11 +303,9 @@ $mysqli->close();
             <div class="logo">
                 <h1>LearnHub</h1>
             </div>
-            <!-- Update the navigation links in dashboard.php -->
             <nav>
     <ul>
         <li><a href="index.html">Home</a></li>
-        <li><a href="courses.html">Courses</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
     </ul>
@@ -453,7 +446,6 @@ $mysqli->close();
                     <h4>Quick Links</h4>
                     <ul>
         <li><a href="index.html">Home</a></li>
-        <li><a href="courses.php">Courses</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.php">Contact</a></li>
     </ul>

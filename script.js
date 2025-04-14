@@ -1,10 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Mobile Menu Setup
     const menuToggle = document.querySelector('.menu-toggle');
     const mobileMenu = document.createElement('div');
     mobileMenu.className = 'mobile-menu';
     
-    // Create mobile menu content with updated links
     mobileMenu.innerHTML = `
         <div class="mobile-menu-header">
             <div class="logo">
@@ -28,28 +26,23 @@ document.addEventListener('DOMContentLoaded', function() {
     
     document.body.appendChild(mobileMenu);
     
-    // Toggle mobile menu
     menuToggle.addEventListener('click', function() {
         mobileMenu.classList.add('active');
     });
     
-    // Close mobile menu
     const closeMenu = document.querySelector('.close-menu');
     closeMenu.addEventListener('click', function() {
         mobileMenu.classList.remove('active');
     });
     
-    // Testimonial Slider
     const testimonials = document.querySelectorAll('.testimonial');
     let currentTestimonial = 0;
     
-    // Hide all testimonials except the first one
     if (testimonials.length > 1) {
         for (let i = 1; i < testimonials.length; i++) {
             testimonials[i].style.display = 'none';
         }
         
-        // Auto slide testimonials
         setInterval(() => {
             testimonials[currentTestimonial].style.display = 'none';
             currentTestimonial = (currentTestimonial + 1) % testimonials.length;
@@ -57,7 +50,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 5000);
     }
     
-    // Scroll to top button
     const scrollBtn = document.createElement('button');
     scrollBtn.className = 'scroll-top';
     scrollBtn.innerHTML = '↑';
@@ -79,7 +71,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     document.body.appendChild(scrollBtn);
     
-    // Show/hide scroll button
     window.addEventListener('scroll', function() {
         if (window.pageYOffset > 300) {
             scrollBtn.style.display = 'block';
@@ -88,7 +79,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Scroll to top when button is clicked
     scrollBtn.addEventListener('click', function() {
         window.scrollTo({
             top: 0,
@@ -96,7 +86,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Animate elements on scroll
     const animateElements = document.querySelectorAll('.feature-card, .course-card, .testimonial');
     
     function checkScroll() {
@@ -111,20 +100,16 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Set initial state for animation
     animateElements.forEach(element => {
         element.style.opacity = '0';
         element.style.transform = 'translateY(20px)';
         element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
     });
     
-    // Check elements on load
     checkScroll();
     
-    // Check elements on scroll
     window.addEventListener('scroll', checkScroll);
 
-    // Contact Form Validation
     const contactForm = document.getElementById('contactForm');
     const successMessage = document.getElementById('success-message');
     
@@ -132,25 +117,21 @@ document.addEventListener('DOMContentLoaded', function() {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Reset errors
             document.querySelectorAll('.error').forEach(error => {
                 error.style.display = 'none';
             });
             
-            // Get form values
             const name = document.getElementById('name').value.trim();
             const email = document.getElementById('email').value.trim();
             const message = document.getElementById('message').value.trim();
             
             let isValid = true;
             
-            // Validate name
             if (name === '') {
                 document.getElementById('name-error').style.display = 'block';
                 isValid = false;
             }
             
-            // Validate email
             if (email === '') {
                 document.getElementById('email-error').textContent = 'Please enter your email.';
                 document.getElementById('email-error').style.display = 'block';
@@ -161,18 +142,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 isValid = false;
             }
             
-            // Validate message
             if (message === '') {
                 document.getElementById('message-error').style.display = 'block';
                 isValid = false;
             }
             
-            // If form is valid, show success message and reset form
             if (isValid) {
                 successMessage.style.display = 'block';
                 contactForm.reset();
                 
-                // Hide success message after 5 seconds
                 setTimeout(function() {
                     successMessage.style.display = 'none';
                 }, 5000);
@@ -180,7 +158,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Email validation function
     function isValidEmail(email) {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailRegex.test(email);

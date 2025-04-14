@@ -239,7 +239,6 @@
                     <h4>Quick Links</h4>
                     <ul>
                         <li><a href="index.html">Home</a></li>
-                        <li><a href="courses.html">Courses</a></li>
                         <li><a href="about.html">About</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
@@ -268,12 +267,9 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Mobile Menu Setup
             const menuToggle = document.querySelector('.menu-toggle');
             const mobileMenu = document.createElement('div');
             mobileMenu.className = 'mobile-menu';
-            
-            // Create mobile menu content with updated links
             mobileMenu.innerHTML = `
                 <div class="mobile-menu-header">
                     <div class="logo">
@@ -297,25 +293,21 @@
             
             document.body.appendChild(mobileMenu);
             
-            // Toggle mobile menu
             menuToggle.addEventListener('click', function() {
                 mobileMenu.classList.add('active');
             });
             
-            // Close mobile menu
             const closeMenu = document.querySelector('.close-menu');
             closeMenu.addEventListener('click', function() {
                 mobileMenu.classList.remove('active');
             });
             
-            // Scroll to top button
             const scrollBtn = document.createElement('button');
             scrollBtn.className = 'scroll-top';
             scrollBtn.innerHTML = '↑';
             
             document.body.appendChild(scrollBtn);
             
-            // Show/hide scroll button
             window.addEventListener('scroll', function() {
                 if (window.pageYOffset > 300) {
                     scrollBtn.style.display = 'block';
@@ -324,15 +316,12 @@
                 }
             });
             
-            // Scroll to top when button is clicked
             scrollBtn.addEventListener('click', function() {
                 window.scrollTo({
                     top: 0,
                     behavior: 'smooth'
                 });
             });
-            
-            // Login Form Validation
             const loginForm = document.getElementById('loginForm');
             const loginError = document.getElementById('login-error');
             
@@ -340,19 +329,16 @@
                 loginForm.addEventListener('submit', function(e) {
                     e.preventDefault();
                     
-                    // Reset errors
                     document.querySelectorAll('.error').forEach(error => {
                         error.style.display = 'none';
                     });
                     loginError.style.display = 'none';
                     
-                    // Get form values
                     const email = document.getElementById('email').value.trim();
                     const password = document.getElementById('password').value.trim();
                     
                     let isValid = true;
                     
-                    // Validate email
                     if (email === '') {
                         document.getElementById('email-error').style.display = 'block';
                         isValid = false;
@@ -361,29 +347,21 @@
                         document.getElementById('email-error').style.display = 'block';
                         isValid = false;
                     }
-                    
-                    // Validate password
                     if (password === '') {
                         document.getElementById('password-error').style.display = 'block';
                         isValid = false;
                     }
                     
-                    // If form is valid, simulate login
                     if (isValid) {
-                        // For demo purposes, let's check for a demo account
-                        // In a real application, this would be handled by server-side code
                         if (email === 'demo@learnhub.com' && password === 'password123') {
-                            // Redirect to dashboard
                             window.location.href = 'dashboard.html';
                         } else {
-                            // Show login error
                             loginError.style.display = 'block';
                         }
                     }
                 });
             }
             
-            // Email validation function
             function isValidEmail(email) {
                 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                 return emailRegex.test(email);
