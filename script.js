@@ -1,40 +1,61 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Simple mobile menu implementation
     const menuToggle = document.querySelector('.menu-toggle');
-    const mobileMenu = document.createElement('div');
-    mobileMenu.className = 'mobile-menu';
-    
-    mobileMenu.innerHTML = `
-        <div class="mobile-menu-header">
-            <div class="logo">
-                <h1>LearnHub</h1>
-            </div>
-            <div class="close-menu">×</div>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="courses.html">Courses</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html" class="active">Contact</a></li>
-            </ul>
-        </nav>
-        <div class="mobile-auth">
-            <a href="login.html" class="btn btn-primary">Login</a>
-            <a href="register.html" class="btn">Sign Up</a>
-        </div>
-    `;
-    
-    document.body.appendChild(mobileMenu);
-    
-    menuToggle.addEventListener('click', function() {
-        mobileMenu.classList.add('active');
+    const mobileNav = document.querySelector('.mobile-nav');
+    const overlay = document.querySelector('.overlay');
+    const closeBtn = document.querySelector('.mobile-nav-close');
+    const body = document.body;
+
+    console.log("Menu elements found:", {
+        menuToggle: !!menuToggle,
+        mobileNav: !!mobileNav,
+        overlay: !!overlay,
+        closeBtn: !!closeBtn
+    });
+
+    // Toggle menu
+    if (menuToggle) {
+        menuToggle.onclick = function(e) {
+            e.stopPropagation();
+            console.log("Menu toggle clicked");
+            mobileNav.style.left = "0";
+            overlay.style.display = "block";
+            body.style.overflow = "hidden";
+        };
+    }
+
+    // Close menu
+    if (closeBtn) {
+        closeBtn.onclick = function() {
+            console.log("Close button clicked");
+            mobileNav.style.left = "-100%";
+            overlay.style.display = "none";
+            body.style.overflow = "";
+        };
+    }
+
+    // Close when clicking overlay
+    if (overlay) {
+        overlay.onclick = function() {
+            console.log("Overlay clicked");
+            mobileNav.style.left = "-100%";
+            overlay.style.display = "none";
+            body.style.overflow = "";
+        };
+    }
+
+    // Close when clicking links
+    const mobileLinks = document.querySelectorAll('.mobile-nav a');
+    mobileLinks.forEach(link => {
+        link.onclick = function() {
+            console.log("Mobile link clicked");
+            mobileNav.style.left = "-100%";
+            overlay.style.display = "none";
+            body.style.overflow = "";
+        };
     });
     
-    const closeMenu = document.querySelector('.close-menu');
-    closeMenu.addEventListener('click', function() {
-        mobileMenu.classList.remove('active');
-    });
-    
+    // Testimonials functionality
     const testimonials = document.querySelectorAll('.testimonial');
     let currentTestimonial = 0;
     
@@ -50,6 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 5000);
     }
     
+    // Scroll to top button
     const scrollBtn = document.createElement('button');
     scrollBtn.className = 'scroll-top';
     scrollBtn.innerHTML = '↑';
@@ -86,6 +108,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
+    // Animation on scroll
     const animateElements = document.querySelectorAll('.feature-card, .course-card, .testimonial');
     
     function checkScroll() {
@@ -110,6 +133,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     window.addEventListener('scroll', checkScroll);
 
+    // Contact form validation
     const contactForm = document.getElementById('contactForm');
     const successMessage = document.getElementById('success-message');
     

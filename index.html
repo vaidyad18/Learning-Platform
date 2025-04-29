@@ -7,6 +7,742 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LearnHub - Online Learning Platform</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Mobile Navigation */
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 0;
+            }
+
+            header .container {
+                flex-wrap: wrap;
+            }
+
+            nav {
+                position: static;
+                width: 100%;
+                height: auto;
+                background-color: transparent;
+                margin-top: 15px;
+                order: 3;
+            }
+
+            nav ul {
+                flex-direction: row;
+                justify-content: center;
+                padding: 0;
+            }
+
+            nav ul li {
+                margin: 0 10px;
+            }
+
+            nav ul li a {
+                font-size: 1rem;
+                padding: 5px 10px;
+            }
+
+            .auth-buttons {
+                display: flex;
+                order: 2;
+            }
+
+            .menu-toggle {
+                display: none;
+            }
+
+            .logo {
+                order: 1;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 10px 0;
+            }
+
+            .logo h1 {
+                font-size: 1.5rem;
+            }
+
+            nav ul li {
+                margin: 0 5px;
+            }
+
+            nav ul li a {
+                font-size: 0.9rem;
+                padding: 5px 8px;
+            }
+
+            .auth-buttons .btn {
+                padding: 6px 15px;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Hero Section Responsive */
+        .hero {
+            padding: 80px 0;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            line-height: 1.2;
+        }
+
+        .hero-image img {
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .hero-image img:hover {
+            transform: translateY(-10px);
+        }
+
+        @media (max-width: 992px) {
+            .hero {
+                padding: 60px 0;
+            }
+
+            .hero .container {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .hero-content {
+                padding-right: 0;
+                text-align: center;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-image {
+                margin: 0 auto;
+                max-width: 80%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 50px 0;
+            }
+
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+
+            .explorebtn {
+                padding: 10px 25px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 40px 0;
+            }
+
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .explorebtn {
+                padding: 8px 20px;
+                font-size: 0.9rem;
+            }
+
+            .hero-image {
+                max-width: 100%;
+            }
+        }
+
+        /* Features Section Responsive */
+        .features {
+            padding: 70px 0;
+        }
+
+        .features h2 {
+            font-size: 2.2rem;
+        }
+
+        .feature-card {
+            transition: transform 0.3s ease;
+            padding: 25px;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        @media (max-width: 992px) {
+            .features {
+                padding: 60px 0;
+            }
+
+            .features h2 {
+                font-size: 2rem;
+                margin-bottom: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .features {
+                padding: 50px 0;
+            }
+
+            .features h2 {
+                font-size: 1.8rem;
+                margin-bottom: 30px;
+            }
+
+            .feature-grid {
+                gap: 20px;
+            }
+
+            .feature-card {
+                padding: 20px;
+            }
+
+            .feature-icon {
+                font-size: 2rem;
+            }
+
+            .feature-card h3 {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .features {
+                padding: 40px 0;
+            }
+
+            .features h2 {
+                font-size: 1.6rem;
+                margin-bottom: 25px;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+        }
+
+        /* Courses Section Responsive */
+        .popular-courses {
+            padding: 70px 0;
+        }
+
+        .popular-courses h1 {
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .course-card {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .course-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .between {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+        }
+
+        @media (max-width: 992px) {
+            .popular-courses {
+                padding: 60px 0;
+            }
+
+            .popular-courses h1 {
+                font-size: 2rem;
+                margin-bottom: 30px;
+            }
+
+            .course-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 25px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .popular-courses {
+                padding: 50px 0;
+            }
+
+            .popular-courses h1 {
+                font-size: 1.8rem;
+                margin-bottom: 25px;
+            }
+
+            .course-grid {
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .popular-courses {
+                padding: 40px 0;
+            }
+
+            .popular-courses h1 {
+                font-size: 1.6rem;
+                margin-bottom: 20px;
+            }
+
+            .course-grid {
+                grid-template-columns: 1fr;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+
+            .between {
+                flex-direction: column;
+                gap: 10px;
+                align-items: flex-start;
+            }
+
+            .between .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .amount {
+                margin-top: 5px;
+            }
+        }
+
+        /* Testimonials Responsive */
+        .testimonials {
+            padding: 70px 0;
+            background-color: #f8f9fa;
+            text-align: center;
+        }
+
+        .testimonials .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .testimonials h2 {
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .testimonial-slider {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .testimonial {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            max-width: 600px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .testimonial p {
+            font-style: italic;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .testimonial-author img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+            object-fit: cover;
+        }
+
+        .testimonial-author div {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .testimonial-author h4 {
+            margin: 0 0 5px 0;
+            font-size: 1.1rem;
+        }
+
+        .testimonial-author span {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 992px) {
+            .testimonials {
+                padding: 60px 0;
+            }
+
+            .testimonials h2 {
+                font-size: 2rem;
+                margin-bottom: 30px;
+            }
+            
+            .testimonial {
+                max-width: 500px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .testimonials {
+                padding: 50px 0;
+            }
+
+            .testimonials h2 {
+                font-size: 1.8rem;
+                margin-bottom: 25px;
+            }
+
+            .testimonial {
+                padding: 20px;
+                max-width: 400px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .testimonials {
+                padding: 40px 0;
+            }
+
+            .testimonials h2 {
+                font-size: 1.6rem;
+                margin-bottom: 20px;
+            }
+
+            .testimonial {
+                padding: 15px;
+                max-width: 300px;
+            }
+
+            .testimonial-author img {
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        /* Footer Responsive */
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            padding: 40px 0;
+        }
+
+        .footer-col {
+            padding: 0 15px;
+        }
+
+        .footer-col h3, .footer-col h4 {
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .footer-col p {
+            margin-bottom: 10px;
+            line-height: 1.6;
+            color: #ccc;
+        }
+
+        .footer-col ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding: 20px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-bottom p {
+            color: #ccc;
+        }
+
+        @media (max-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 30px;
+            }
+
+            .footer-col {
+                padding: 0 20px;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            .footer-col p {
+                max-width: 300px;
+                margin: 0 auto 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-col {
+                padding: 0 15px;
+            }
+
+            .footer-col p {
+                font-size: 0.9rem;
+            }
+
+            .social-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+        /* Mobile Menu Styles */
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            width: 30px;
+            height: 24px;
+            position: relative;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            display: block;
+            position: absolute;
+            height: 3px;
+            width: 100%;
+            background: var(--primary-color);
+            border-radius: 3px;
+            opacity: 1;
+            left: 0;
+            transform: rotate(0deg);
+            transition: .25s ease-in-out;
+        }
+
+        .menu-toggle span:nth-child(1) {
+            top: 0px;
+        }
+
+        .menu-toggle span:nth-child(2) {
+            top: 10px;
+        }
+
+        .menu-toggle span:nth-child(3) {
+            top: 20px;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            top: 10px;
+            transform: rotate(135deg);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+            left: -60px;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            top: 10px;
+            transform: rotate(-135deg);
+        }
+
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100vh;
+            background-color: #fff;
+            z-index: 1000;
+            transition: 0.3s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            padding-top: 70px;
+        }
+
+        .mobile-nav.active {
+            left: 0;
+        }
+
+        .mobile-nav-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            z-index: 1002;
+        }
+
+        .mobile-nav-close::before,
+        .mobile-nav-close::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary-color);
+            border-radius: 3px;
+        }
+
+        .mobile-nav-close::before {
+            transform: rotate(45deg);
+        }
+
+        .mobile-nav-close::after {
+            transform: rotate(-45deg);
+        }
+        
+        .mobile-nav ul {
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .mobile-nav ul li {
+            margin: 10px 0;
+            list-style: none;
+        }
+
+        .mobile-nav ul li a {
+            color: var(--dark-color);
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 500;
+            display: block;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-nav ul li a:hover,
+        .mobile-nav ul li a.active {
+            background-color: #f0f0f0;
+            color: var(--primary-color);
+        }
+
+        .mobile-nav-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 0 20px 20px;
+        }
+
+        .mobile-nav-buttons .btn {
+            text-align: center;
+            padding: 12px 0;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+        .no-scroll {
+            overflow: hidden;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 0;
+            }
+            
+            .menu-toggle {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+            
+            nav {
+                display: none;
+            }
+            
+            .auth-buttons {
+                display: none;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -34,6 +770,21 @@
             </div>
         </div>
     </header>
+
+    <!-- Mobile Navigation -->
+    <div class="overlay"></div>
+    <div class="mobile-nav">
+        <div class="mobile-nav-close"></div>
+        <ul>
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="mobile-nav-buttons">
+            <a href="login.html" class="btn btn-primary">Login</a>
+            <a href="register.html" class="btn">Sign Up</a>
+        </div>
+    </div>
 
     <section class="hero">
         <div class="container">
@@ -255,6 +1006,51 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        // Mobile menu functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const mobileNav = document.querySelector('.mobile-nav');
+            const overlay = document.querySelector('.overlay');
+            const closeBtn = document.querySelector('.mobile-nav-close');
+            const body = document.body;
+
+            // Toggle mobile menu
+            menuToggle.addEventListener('click', function() {
+                menuToggle.classList.toggle('active');
+                mobileNav.classList.toggle('active');
+                overlay.classList.toggle('active');
+                body.classList.toggle('no-scroll');
+            });
+
+            // Close mobile menu when clicking on close button
+            closeBtn.addEventListener('click', function() {
+                menuToggle.classList.remove('active');
+                mobileNav.classList.remove('active');
+                overlay.classList.remove('active');
+                body.classList.remove('no-scroll');
+            });
+
+            // Close mobile menu when clicking on overlay
+            overlay.addEventListener('click', function() {
+                menuToggle.classList.remove('active');
+                mobileNav.classList.remove('active');
+                overlay.classList.remove('active');
+                body.classList.remove('no-scroll');
+            });
+
+            // Close mobile menu when clicking on a link
+            const mobileLinks = document.querySelectorAll('.mobile-nav a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    menuToggle.classList.remove('active');
+                    mobileNav.classList.remove('active');
+                    overlay.classList.remove('active');
+                    body.classList.remove('no-scroll');
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>

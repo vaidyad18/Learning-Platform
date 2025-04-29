@@ -353,11 +353,40 @@
                     }
                     
                     if (isValid) {
+                        // Check if it's the demo account
                         if (email === 'demo@learnhub.com' && password === 'password123') {
-                            window.location.href = 'dashboard.html';
-                        } else {
-                            loginError.style.display = 'block';
+                            window.location.href = 'index.html'; // Redirect to homepage as a temporary solution
+                            return;
                         }
+                        
+                        // Check localStorage for registered users
+                        const storedUserJSON = localStorage.getItem('learnhub-user');
+                        
+                        if (storedUserJSON) {
+                            const storedUser = JSON.parse(storedUserJSON);
+                            
+                            if (storedUser.email === email && storedUser.password === password) {
+                                // Login successful
+                                // Create a session-like object in localStorage
+                                const session = {
+                                    loggedin: true,
+                                    user: {
+                                        email: storedUser.email,
+                                        fullname: storedUser.fullname
+                                    },
+                                    timestamp: new Date().getTime()
+                                };
+                                
+                                localStorage.setItem('learnhub-session', JSON.stringify(session));
+                                
+                                // Redirect to dashboard
+                                window.location.href = 'index.html'; // Redirect to homepage as a temporary solution
+                                return;
+                            }
+                        }
+                        
+                        // If we get here, login failed
+                        loginError.style.display = 'block';
                     }
                 });
             }
