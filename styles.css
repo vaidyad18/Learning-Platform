@@ -165,6 +165,7 @@ nav ul li {
 
 nav ul li a {
     font-weight: 500;
+    color: var(--dark-color);
 }
 
 nav ul li a:hover,
